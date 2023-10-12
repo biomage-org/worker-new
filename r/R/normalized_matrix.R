@@ -40,20 +40,20 @@ GetNormalizedExpression <- function(req, data) {
 
   matrix <- tibble::rownames_to_column(matrix, var = " ")
 
-  print("HOLA3")
+  message("HOLA3")
 
   tryCatch({
     write.csv(matrix, INTERNAL_RESULTS_PATH, row.names = F, quote = F)
   }, warning = function(warning_condition) {
-    print("warning_conditionDebug")
-    print(warning_condition)
+    message("warning_conditionDebug")
+    message(warning_condition)
   }, error = function(error_condition) {
-    print("error_conditionDebug")
-    print(error_condition)
+    message("error_conditionDebug")
+    message(error_condition)
   }, finally={})
 
 
-  print("HOLA5")
+  message("HOLA5")
 
   return(INTERNAL_RESULTS_PATH)
 }
