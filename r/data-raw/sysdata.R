@@ -20,7 +20,7 @@ IDS_IDS <- "ids_ids"
 
 RDS_PATH <- "/data/processed.rds"
 
-INTERNAL_RESULTS_PATH <- "/data/results/"
+INTERNAL_RESULTS_PATH <- "/data/rResult"
 
 usethis::use_data(error_codes,
                   ULTIMATE_SEED,
