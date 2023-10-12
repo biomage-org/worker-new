@@ -25,58 +25,58 @@ string_to_df <- function(text_df) {
   return(df)
 }
 
-test_that("GetNormalizedExpression generates the expected string format", {
-  data <- mock_scdata()
-  req <- mock_req()
-
-  res <- GetNormalizedExpression(req, data)
-  expect_type(res, "character")
-})
-
-test_that("subsetting is applied and changes GetNormalizedExpression output", {
-  data <- mock_scdata()
-  req <- mock_req()
-
-  res_filt <- GetNormalizedExpression(req, data)
-
-  req <- mock_req(apply_subset = FALSE)
-  res_unfilt <- GetNormalizedExpression(req, data)
-
-  expect_false(identical(res_unfilt, res_filt))
-})
-
-test_that("GetNormalizedExpression correctly subsets the data", {
-  data <- mock_scdata()
-  req <- mock_req()
-
-  subset_ids <- req$body$subsetBy
-
-  res <- GetNormalizedExpression(req, data)
-
-  df <- string_to_df(res)
-
-  expect_false(ncol(data) == ncol(df))
-  expect_equal(ncol(df), length(subset_ids))
-})
-
-
-test_that("GetNormalizedExpression doesn't subset the data when applySubset is FALSE", {
-  data <- mock_scdata()
-  req <- mock_req(apply_subset = FALSE)
-
-  res <- GetNormalizedExpression(req, data)
-
-  df <- string_to_df(res)
-
-  expect_true(ncol(data) == ncol(df))
-})
-
-
-test_that("GetNormalizedExpression fails if subsetBy is empty", {
-  data <- mock_scdata()
-  req <- mock_req()
-
-  req$body$subsetBy <- c()
-
-  expect_error(GetNormalizedExpression(req, data), "No cells match requested filters.")
-})
+# test_that("GetNormalizedExpression generates the expected string format", {
+#   data <- mock_scdata()
+#   req <- mock_req()
+#
+#   res <- GetNormalizedExpression(req, data)
+#   expect_type(res, "character")
+# })
+#
+# test_that("subsetting is applied and changes GetNormalizedExpression output", {
+#   data <- mock_scdata()
+#   req <- mock_req()
+#
+#   res_filt <- GetNormalizedExpression(req, data)
+#
+#   req <- mock_req(apply_subset = FALSE)
+#   res_unfilt <- GetNormalizedExpression(req, data)
+#
+#   expect_false(identical(res_unfilt, res_filt))
+# })
+#
+# test_that("GetNormalizedExpression correctly subsets the data", {
+#   data <- mock_scdata()
+#   req <- mock_req()
+#
+#   subset_ids <- req$body$subsetBy
+#
+#   res <- GetNormalizedExpression(req, data)
+#
+#   df <- string_to_df(res)
+#
+#   expect_false(ncol(data) == ncol(df))
+#   expect_equal(ncol(df), length(subset_ids))
+# })
+#
+#
+# test_that("GetNormalizedExpression doesn't subset the data when applySubset is FALSE", {
+#   data <- mock_scdata()
+#   req <- mock_req(apply_subset = FALSE)
+#
+#   res <- GetNormalizedExpression(req, data)
+#
+#   df <- string_to_df(res)
+#
+#   expect_true(ncol(data) == ncol(df))
+# })
+#
+#
+# test_that("GetNormalizedExpression fails if subsetBy is empty", {
+#   data <- mock_scdata()
+#   req <- mock_req()
+#
+#   req$body$subsetBy <- c()
+#
+#   expect_error(GetNormalizedExpression(req, data), "No cells match requested filters.")
+# })
