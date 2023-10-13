@@ -38,13 +38,12 @@ GetNormalizedExpression <- function(req, data) {
 
   message("Number of cells in matrix to return: ", ncol(matrix))
 
-  # matrix <- tibble::rownames_to_column(matrix, var = " ")
+  matrix <- tibble::rownames_to_column(matrix, var = " ")
 
   message("HOLA3")
 
   tryCatch({
-    data.table::fwrite(matrix,INTERNAL_RESULTS_PATH, quote = F, row.names = T)
-    # vroom::vroom_write(matrix, INTERNAL_RESULTS_PATH, delim = ",", quote = "none")
+    vroom::vroom_write(matrix, INTERNAL_RESULTS_PATH, delim = ",", quote = "none")
   }, warning = function(warning_condition) {
     message("warning_conditionDebug")
     message(warning_condition)
