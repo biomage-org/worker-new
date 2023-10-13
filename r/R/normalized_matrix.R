@@ -43,7 +43,7 @@ GetNormalizedExpression <- function(req, data) {
   message("HOLA3")
 
   tryCatch({
-    write.csv(matrix, INTERNAL_RESULTS_PATH, row.names = F, quote = F)
+    vroom::vroom_write(matrix, INTERNAL_RESULTS_PATH, delim = ",", quote = "none")
   }, warning = function(warning_condition) {
     message("warning_conditionDebug")
     message(warning_condition)
