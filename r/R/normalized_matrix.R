@@ -43,7 +43,8 @@ GetNormalizedExpression <- function(req, data) {
   message("HOLA3")
 
   tryCatch({
-    vroom::vroom_write(matrix, INTERNAL_RESULTS_PATH, delim = ",", quote = "none")
+    # INTERNAL_RESULTS_PATH_GZ finishes with ".gz", this will cause the file to be compressed
+    vroom::vroom_write(matrix, INTERNAL_RESULTS_PATH_GZ, delim = ",", quote = "none")
   }, warning = function(warning_condition) {
     message("warning_conditionDebug")
     message(warning_condition)
@@ -55,5 +56,5 @@ GetNormalizedExpression <- function(req, data) {
 
   message("HOLA5")
 
-  return(INTERNAL_RESULTS_PATH)
+  return(INTERNAL_RESULTS_PATH_GZ)
 }
