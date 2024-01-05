@@ -162,7 +162,7 @@ jobs:
           # Images for production uses semantic versioning to determine the latest image.
           echo "timestamp=$TIMESTAMP" >> $GITHUB_OUTPUT
 
-          # This will take a GitHub repo name like `hms-dbmi-cellenics/iac`
+          # This will take a GitHub repo name like `parsebio/iac`
           # and turns it into `iac`. This will be the name of the
           # ECR repository.
           IMAGE_REPO_NAME=$(echo $GITHUB_REPOSITORY | awk -F '/' '{print $2}')
