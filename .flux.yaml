@@ -11,6 +11,8 @@ metadata:
   name: FILLED_IN_BY_CI
   namespace: FILLED_IN_BY_CI
 spec:
+  secretRef:
+    name: github-token
   interval: 5m0s
   url: FILLED_IN_BY_CI
 ---
