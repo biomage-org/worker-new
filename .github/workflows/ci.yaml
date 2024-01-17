@@ -27,7 +27,7 @@ permissions:
 jobs:
   uncheck-integration-test:
     name: Mark integration test as not run
-    # permissions: read-all
+    permissions: read-all
     runs-on: ubuntu-20.04
     if: github.event_name == 'pull_request'
     steps:
